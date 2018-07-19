@@ -33,5 +33,20 @@ describe '##### parts endpoints #####' do
     expect(part["description"])
   end
 
+  it 'returns one item based on search parameter' do
+    create_list(:part, 3)
+
+    puts '* hitting endpoint'
+    get 'api/v1/parts/find?name=Alternator%202'
+
+    puts '* checking response type'
+    expect(response).to be_success
+
+    part = JSON.parse(response.body)
+
+    puts '* checking return'
+    expect(part["name"].to eq("Alternator 2")
+  end
+
 
 end
