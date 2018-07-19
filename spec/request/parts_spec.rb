@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'parts api' do
+describe 'parts api', :type => :request do
 
   it 'returns a part record' do
     create_list(:part, 5)
