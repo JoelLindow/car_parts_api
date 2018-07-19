@@ -6,6 +6,7 @@ FactoryBot.define do
 
     description "This is a nice alternator"
     oem [true, false].sample
+    price 5.25
   end
 
 end
