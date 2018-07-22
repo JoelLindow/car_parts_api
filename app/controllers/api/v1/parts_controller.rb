@@ -11,6 +11,20 @@ module Api
         end
 
 
+        # CUSTOM PARTS METHODS
+
+        def find_show
+          # binding.pry
+          render json: Part.find_by(part_params)
+        end
+
+
+        private
+
+        def part_params
+          params.permit(:id, :name)
+        end
+
       end
   end
 end

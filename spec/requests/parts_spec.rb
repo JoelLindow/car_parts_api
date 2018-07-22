@@ -33,11 +33,17 @@ describe '##### parts endpoints #####' do
     expect(part["description"])
   end
 
+
+
+  # CUSTOM PARTS SEARCH TESTS
+
+
   it 'returns one item based on search parameter' do
-    create_list(:part, 3)
+    # create_list(:part, 3)
+    Part.create(name: "ABCDEFG", description: "This this is really huge", oem: true, price: 10.25)
 
     puts '* hitting endpoint'
-    get 'api/v1/parts/find?name=Alternator%202'
+    get '/api/v1/parts/find?name=ABCDEFG'
 
     puts '* checking response type'
     expect(response).to be_success
@@ -45,7 +51,7 @@ describe '##### parts endpoints #####' do
     part = JSON.parse(response.body)
 
     puts '* checking return'
-    expect(part["name"].to eq("Alternator 2")
+    expect(part["name"]).to eq("ABCDEFG")
   end
 
 
