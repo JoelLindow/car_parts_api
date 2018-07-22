@@ -10,14 +10,11 @@ module Api
           render json: Part.find(params[:id])
         end
 
-
         # CUSTOM PARTS METHODS
-
         def find_show
-          # binding.pry
+          # Will potentially present more than 1 item
           render json: Part.find_by(part_params)
         end
-
 
         private
 
