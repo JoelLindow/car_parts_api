@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180719015035) do
+ActiveRecord::Schema.define(version: 20180725011115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "car_models", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "make_car_models", force: :cascade do |t|
+    t.bigint "car_model_id"
+    t.bigint "make_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_model_id"], name: "index_make_car_models_on_car_model_id"
+    t.index ["make_id"], name: "index_make_car_models_on_make_id"
+  end
+
+  create_table "makes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "parts", force: :cascade do |t|
     t.string "name"
@@ -22,6 +43,28 @@ ActiveRecord::Schema.define(version: 20180719015035) do
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "make_car_model_id"
+    t.index ["make_car_model_id"], name: "index_parts_on_make_car_model_id"
   end
 
+  create_table "year_car_models", force: :cascade do |t|
+    t.bigint "year_id"
+    t.bigint "car_model_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_model_id"], name: "index_year_car_models_on_car_model_id"
+    t.index ["year_id"], name: "index_year_car_models_on_year_id"
+  end
+
+  create_table "years", force: :cascade do |t|
+    t.integer "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "make_car_models", "car_models"
+  add_foreign_key "make_car_models", "makes"
+  add_foreign_key "parts", "make_car_models"
+  add_foreign_key "year_car_models", "car_models"
+  add_foreign_key "year_car_models", "years"
 end
