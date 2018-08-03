@@ -57,8 +57,8 @@ describe '##### parts endpoints #####' do
     make = create(:make)
     part = create(:part)
     car_model = create(:car_model)
-    MakeCarModelPart.create{make_id: make.id, part_id: part.id, car_model_id: car_model.id}
-    YearCarModel.create{year_id: year.id, car_model_id: car_model.id}
+    MakeCarModelPart.create({make_id: make.id, part_id: part.id, car_model_id: car_model.id})
+    YearCarModel.create({year_id: year.id, car_model_id: car_model.id})
   end
 
 end
