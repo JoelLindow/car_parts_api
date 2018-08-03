@@ -53,12 +53,15 @@ describe '##### parts endpoints #####' do
   # end
 
   it 'can add a record to the database' do
-    year = create(:year)
-    make = create(:make)
-    part = create(:part)
-    car_model = create(:car_model)
-    MakeCarModelPart.create({make_id: make.id, part_id: part.id, car_model_id: car_model.id})
-    YearCarModel.create({year_id: year.id, car_model_id: car_model.id})
+    # year = create(:year)
+    # make = create(:make)
+    # part = create(:part)
+    # car_model = create(:car_model)
+    # MakeCarModelPart.create({make_id: make.id, part_id: part.id, car_model_id: car_model.id})
+    # YearCarModel.create({year_id: year.id, car_model_id: car_model.id})
+
+    WE GOTTA CREATE THE PARAMS COMING IN TO POST A PARTS RECORD
+    post '/api/v1/parts/', params
   end
 
 end
