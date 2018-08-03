@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :car_model do
-    name "MyString"
+    sequence :name do |x|
+      "Crap Box GT #{x}"
+    end
   end
 end

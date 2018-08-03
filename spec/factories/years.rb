@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :year do
-    year 1
+    year rand(1800..1900)
   end
 end

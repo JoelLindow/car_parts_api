@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :make do
-    name "MyString"
+    sequence :name do |x|
+      "#{x} Chevroyotacura"
+    end
   end
 end
