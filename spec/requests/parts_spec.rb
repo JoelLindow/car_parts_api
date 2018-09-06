@@ -63,17 +63,18 @@ describe '##### parts endpoints #####' do
       part: {
         name: "Flux Capacitor",
         description: "This is the higher jigawatt output model",
-        # oem: false,
+        oem: false,
         price: 123.45
       }
     }
-    # WE GOTTA CREATE THE PARAMS COMING IN TO POST A PARTS RECORD
+
     post '/api/v1/parts/', params: part_params
 
     expect(response.status).to eq(204)
 
     last_part = Part.last
     expect(last_part.name).to eq("Flux Capacitor")
+
   end
 
 end
