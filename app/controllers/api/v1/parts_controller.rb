@@ -13,7 +13,7 @@ module Api
       def create
         x = Part.new(strong_params)
         if x.save
-          render status: 204
+          render status: 204, json: {message: "#{x.name} saved to Database"}
         else
           render status: 400, json: {message: x.errors}
         end
