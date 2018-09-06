@@ -10,16 +10,25 @@ module Api
           render json: Part.find(params[:id])
         end
 
+        def create
+          Part.create(strong_params)
+          # binding.pry
+        end
+
         # CUSTOM PARTS METHODS
         def find_show
           # Will potentially present more than 1 item
-          render json: Part.find_by(part_params)
+          render json: Part.find_by(find_params)
         end
 
         private
 
-        def part_params
+        def find_params
           params.permit(:id, :name)
+        end
+
+        def strong_params
+          params.require(:part).permit(:name, :description, :oem, :price)
         end
 
       end

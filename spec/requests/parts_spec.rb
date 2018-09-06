@@ -59,9 +59,21 @@ describe '##### parts endpoints #####' do
     # car_model = create(:car_model)
     # MakeCarModelPart.create({make_id: make.id, part_id: part.id, car_model_id: car_model.id})
     # YearCarModel.create({year_id: year.id, car_model_id: car_model.id})
+    part_params = {
+      part: {
+        name: "Flux Capacitor",
+        description: "This is the higher jigawatt output model",
+        # oem: false,
+        price: 123.45
+      }
+    }
+    # WE GOTTA CREATE THE PARAMS COMING IN TO POST A PARTS RECORD
+    post '/api/v1/parts/', params: part_params
 
-    WE GOTTA CREATE THE PARAMS COMING IN TO POST A PARTS RECORD
-    post '/api/v1/parts/', params
+    expect(response.status).to eq(204)
+
+    last_part = Part.last
+    expect(last_part.name).to eq("Flux Capacitor")
   end
 
 end

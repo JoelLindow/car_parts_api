@@ -9,6 +9,9 @@ Rails.application.routes.draw do
       get '/parts',     to: 'parts#index'
       get '/parts/:id', to: 'parts#show'
 
+      # Parts Post
+      post '/parts',    to: 'parts#create'
+
 
 
 
