@@ -11,11 +11,11 @@ module Api
       end
 
       def create
-        x = Part.new(strong_params)
-        if x.save
-          render status: 204, json: {message: "#{x.name} saved to Database"}
+        x = Part.create_part(strong_params)
+        if x[:validity]
+          render json: {message: "#{x[:message]}"}
         else
-          render status: 400, json: {message: x.errors}
+          render json: {message: "#{x[:message]}"}
         end
       end
 

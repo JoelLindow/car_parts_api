@@ -4,9 +4,25 @@ class Part < ApplicationRecord
   has_one :car_model, through: :make_car_model_part
 
   validates_presence_of :name, :description, :price
-  # validates_inclusion_of :oem,  in: [true, false]
-  # validates :oem, inclusion: [true, false]
+  validates_inclusion_of :oem,  in: [true, false]
 
-  # MUST REQUIRE VALIDATION OF TRUE OR FALSE for OEM!
-  #ABOVE COMMENTED VALIDATIONS ARE NOT WORKING. DEFAULTS TO TRUE.
+  def self.create_part(params)
+    x = new(params)
+# binding.pry
+    if params["oem"].to_i == 0
+      x.oem = false
+    elsif params["oem"].to_i == 1
+      x.oem = true
+    else
+      x.oem = nil
+    end
+
+    # binding.pry
+    if x.valid?
+      x.save
+      return {validity: true, message: "Part Successfully Created"}
+    else
+      return {validity: false, message: "ERROR: Part Creation Failed"}
+    end
+  end
 end
