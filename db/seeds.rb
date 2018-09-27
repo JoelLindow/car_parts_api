@@ -7,13 +7,25 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-puts "Seeding Begin"
+puts "********** Seeding Begin"
 
+puts ">>>>> Seeding Models (types)."
+car_one =   CarModel.create(name: "Truck / Suv")
+CarModel.create(name: "Car")
+CarModel.create(name: "Motorcycle / Scooter")
+puts "<<<<< Seeding Models (types) complete."
+
+puts ">>>>> Seeding Car for testing in Production Environment"
+puts "!!!!! THIS DATA SHOULD NOT BE SEEDED INTO ACTUAL PRODUCTION"
+puts "!!!!! THIS DATA SHOULD NOT BE SEEDED INTO ACTUAL PRODUCTION"
+puts "!!!!! THIS DATA SHOULD NOT BE SEEDED INTO ACTUAL PRODUCTION"
+puts "!!!!! THIS DATA SHOULD NOT BE SEEDED INTO ACTUAL PRODUCTION"
+puts "!!!!! THIS DATA SHOULD NOT BE SEEDED INTO ACTUAL PRODUCTION"
 part_one =  Part.create(name: "Huge Alternator", description: "This this is really huge", oem: true, price: 10.25)
-car_one =   CarModel.create(name: "Impreza")
 year_one =  Year.create(year: 1998)
 make_one =  Make.create(name: "Subaru")
 YearCarModel.create(year_id: year_one.id, car_model_id: car_one.id)
 MakeCarModelPart.create(car_model_id: car_one.id, make_id: make_one.id, part_id: part_one.id)
+puts "<<<<< Seeding Car for testing in Production Environment complete"
 
-puts "Seeding Successful"
+puts "********** Seeding Successful"
