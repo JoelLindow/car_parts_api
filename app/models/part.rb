@@ -8,7 +8,6 @@ class Part < ApplicationRecord
 
   def self.create_part(params)
     x = new(params)
-# binding.pry
     if params["oem"].to_i == 0
       x.oem = false
     elsif params["oem"].to_i == 1
@@ -17,7 +16,6 @@ class Part < ApplicationRecord
       x.oem = nil
     end
 
-    # binding.pry
     if x.valid?
       x.save
       return {validity: true, message: "Part Successfully Created"}
