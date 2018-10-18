@@ -7,5 +7,6 @@ class CarModel < ApplicationRecord
   has_many :parts,  through: :make_car_model_parts
   has_one  :make,   through: :make_car_model_parts
 
+  validates_presence_of :name
 
 end
