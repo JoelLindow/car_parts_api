@@ -6,6 +6,7 @@ class Part < ApplicationRecord
   validates_presence_of :name, :description, :price
   validates_inclusion_of :oem,  in: [true, false]
 
+
   def self.create_part(params)
     x = new(params)
     if params["oem"].to_i == 0
