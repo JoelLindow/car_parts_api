@@ -24,8 +24,8 @@ puts "!!!!! THIS DATA SHOULD NOT BE SEEDED INTO ACTUAL PRODUCTION"
 part_one =  Part.create(name: "Huge Alternator", description: "This this is really huge", oem: true, price: 10.25)
 year_one =  Year.create(year: 1998)
 make_one =  Make.create(name: "Subaru")
-YearCarModel.create(year_id: year_one.id, car_model_id: car_one.id)
-MakeCarModelPart.create(car_model_id: car_one.id, make_id: make_one.id, part_id: part_one.id)
+# YearCarModel.create(year_id: year_one.id, car_model_id: car_one.id)
+Spaghetti.create(car_model_id: car_one.id, make_id: make_one.id, part_id: part_one.id, year_id: year_one.id)
 puts "<<<<< Seeding Car for testing in Production Environment complete"
 
 puts "********** Seeding Successful"

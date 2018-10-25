@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180725011001) do
+ActiveRecord::Schema.define(version: 20181025010752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,17 +19,6 @@ ActiveRecord::Schema.define(version: 20180725011001) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "make_car_model_parts", force: :cascade do |t|
-    t.bigint "car_model_id"
-    t.bigint "make_id"
-    t.bigint "part_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["car_model_id"], name: "index_make_car_model_parts_on_car_model_id"
-    t.index ["make_id"], name: "index_make_car_model_parts_on_make_id"
-    t.index ["part_id"], name: "index_make_car_model_parts_on_part_id"
   end
 
   create_table "makes", force: :cascade do |t|
@@ -47,13 +36,17 @@ ActiveRecord::Schema.define(version: 20180725011001) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "year_car_models", force: :cascade do |t|
-    t.bigint "year_id"
+  create_table "spaghettis", force: :cascade do |t|
     t.bigint "car_model_id"
+    t.bigint "make_id"
+    t.bigint "part_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["car_model_id"], name: "index_year_car_models_on_car_model_id"
-    t.index ["year_id"], name: "index_year_car_models_on_year_id"
+    t.bigint "year_id"
+    t.index ["car_model_id"], name: "index_spaghettis_on_car_model_id"
+    t.index ["make_id"], name: "index_spaghettis_on_make_id"
+    t.index ["part_id"], name: "index_spaghettis_on_part_id"
+    t.index ["year_id"], name: "index_spaghettis_on_year_id"
   end
 
   create_table "years", force: :cascade do |t|
@@ -62,9 +55,8 @@ ActiveRecord::Schema.define(version: 20180725011001) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "make_car_model_parts", "car_models"
-  add_foreign_key "make_car_model_parts", "makes"
-  add_foreign_key "make_car_model_parts", "parts"
-  add_foreign_key "year_car_models", "car_models"
-  add_foreign_key "year_car_models", "years"
+  add_foreign_key "spaghettis", "car_models"
+  add_foreign_key "spaghettis", "makes"
+  add_foreign_key "spaghettis", "parts"
+  add_foreign_key "spaghettis", "years"
 end

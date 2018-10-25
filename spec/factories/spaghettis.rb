@@ -1,6 +1,7 @@
 # FactoryBot.define do
-#   factory :year_car_model do
-#     year nil
+#   factory :spaghetti do
 #     car_model nil
+#     make nil
+#     part nil
 #   end
 # end

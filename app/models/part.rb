@@ -1,7 +1,8 @@
 class Part < ApplicationRecord
-  has_one :make_car_model_part
-  has_one :make, through: :make_car_model_part
-  has_one :car_model, through: :make_car_model_part
+  has_one :spaghetti
+  has_one :make, through: :spaghetti
+  has_one :car_model, through: :spaghetti
+  has_one :year, through: :spaghetti
 
   validates_presence_of :name, :description, :price
   validates_inclusion_of :oem,  in: [true, false]
