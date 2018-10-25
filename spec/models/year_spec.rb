@@ -6,4 +6,8 @@ RSpec.describe Year, type: :model do
 
   it { is_expected.to have_many(:car_models) } # Through Join Table
 
+  it { is_expected.to have_many(:parts) } # Through Join Table
+
+  it { is_expected.to have_many(:makes) } # Through Join Table
+
 end

@@ -8,4 +8,7 @@ RSpec.describe Make, type: :model do
 
   it { is_expected.to have_many(:car_models) }
 
+  it { is_expected.to have_many(:years) }
+
+
 end
