@@ -93,7 +93,11 @@ describe '##### parts endpoints #####' do
     last_part = Part.last
     expect(last_part.name).to eq("Flux Capacitor")
     expect(last_part.description).to eq("This is the higher jigawatt output model")
-
+    expect(last_part.oem).to eq(true)
+    expect(last_part.price).to eq(123.45)
+    expect(last_part.year.year).to eq(1998)
+    expect(last_part.make.name).to eq("Ford")
+    expect(last_part.car_model.name).to eq("Truck")
     puts "** Test Successful   VVVVV"
   end
 
