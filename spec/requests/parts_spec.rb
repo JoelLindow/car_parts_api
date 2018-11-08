@@ -6,7 +6,6 @@ describe '##### parts endpoints #####' do
   let(:year) { create(:year) }
 
   it 'returns all parts records' do
-    skip
     create_list(:part, 5)
 
     puts "* hitting endpoint"
@@ -68,15 +67,13 @@ describe '##### parts endpoints #####' do
   end
 
   it 'can add a record to the database' do
-    skip
     puts "* creating params"
     part_params = {
-      part: {
         name: "Flux Capacitor",
         description: "This is the higher jigawatt output model",
         oem: "1",
         price: "123.45"
-      }
+        # year: 1998,
     }
     puts "* posting to API as OEM part"
     post '/api/v1/parts/', params: part_params
