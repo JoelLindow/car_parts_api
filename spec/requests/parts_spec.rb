@@ -72,8 +72,8 @@ describe '##### parts endpoints #####' do
         name: "Flux Capacitor",
         description: "This is the higher jigawatt output model",
         oem: "1",
-        price: "123.45"
-        # year: 1998,
+        price: "123.45",
+        year: 1998
     }
     puts "* posting to API as OEM part"
     post '/api/v1/parts/', params: part_params
