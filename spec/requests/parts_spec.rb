@@ -67,13 +67,18 @@ describe '##### parts endpoints #####' do
   end
 
   it 'can add a record to the database' do
+    create(:year, year: 1998)
+    create(:make, name: "Ford")
+    create(:car_model, name: "Truck")
     puts "* creating params"
     part_params = {
         name: "Flux Capacitor",
         description: "This is the higher jigawatt output model",
         oem: "1",
         price: "123.45",
-        year: 1998
+        year: "1998",
+        car_model: "Truck",
+        car_make: "Ford"
     }
     puts "* posting to API as OEM part"
     post '/api/v1/parts/', params: part_params

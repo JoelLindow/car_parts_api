@@ -32,7 +32,7 @@ module Api
       end
 
       def strong_params
-        params.permit(:name, :description, :oem, :price)
+        params.permit(:name, :description, :oem, :price, :year, :car_model, :car_make)
       end
 
     end
